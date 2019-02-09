@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>約克羊陣線：名單</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="約克羊陣線的名單。" />
+    <meta name="keywords" content="約克羊陣線名單, 約克羊陣線, 約克羊, yorkyoung" />
+    <meta name="author" content="☆牜攵☆犬羊">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.2.1/cyborg/bootstrap.min.css"
+        media="screen" id="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="https://i.imgur.com/nF9H4aD.png" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand active" href="/index.html">約克羊陣線</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/list.html">名單</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/gallery.html">圖庫</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <img src="https://i.imgur.com/wrszs6x.jpg" class="img-fluid rounded mx-auto my-3 d-block">
+        <h1>約克羊陣線：名單</h1>
+        <h2 class="lead">★︶羊友心連心︶♥︶推文傳福音︶★</h2>
+        <form class="form-inline my-3">
+            <input class="form-control mr-sm-2" type="text" id="search-box" placeholder="id">
+            <button class="btn btn-danger my-2" type="button" id="search-btn">移動</button>
+        </form>
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">ＩＤ</th>
+                    <th scope="col">暱稱</th>
+                </tr>
+            </thead>
+            <tbody id="tab">
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <div class="col-lg-12" style="padding-top:10px;">
+            <div class="container">
+                <ul style="text-align: center;">
+                    <li style="display: inline-block; padding-right: 1em;"><a
+                            href="https://www.instagram.com/yorkyoung/" class="fa fa-instagram"></a></li>
+                </ul>
+                <p style="text-align: center;" class="display-5">©2019 @nevikw39 ☆牜攵☆犬羊</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $("#search-box").keyup(
+            () => {
+                for (var i = 0; i < $("#tab").children("tr").length; i++) {
+                    if ($("#tab").children("tr")[i].id.toLowerCase().includes($("#search-box").val().toLowerCase())) {
+                        $("#" + $("#tab").children("tr")[i].id).show();
+                    }
+                    else {
+                        $("#" + $("#tab").children("tr")[i].id).hide();
+                    }
+                }
+            }
+        );
+        $("#search-btn").click(
+            () => {
+                if (!$("#" + $("#search-box").val()).length) {
+                    alert("ID 不在陣線裡 :(");
+                    return;
+                }
+                $(location).attr('href', "#" + $("#search-box").val())
+                $("#" + $("#search-box").val()).focus();
+                $("#" + $("#search-box").val()).toggle(500);
+                $("#" + $("#search-box").val()).toggle(750);
+                $("#" + $("#search-box").val()).slideUp(1250);
+                $("#" + $("#search-box").val()).slideDown(1500);
+            }
+        );
+        var str = atob("aHR0cHM6Ly9jb250ZW50LXNoZWV0cy5nb29nbGVhcGlzLmNvbS92NC9zcHJlYWRzaGVldHMvMVRZODlKd3pNQXZzTUxiOVl4WE1wNk9ZZFJOTWZad3RneU9RYms4T3Q3cWMvdmFsdWVzLzElM0ExMDAwP2tleT1BSXphU3lBdEVhc1hLSl9NWkhwQWlXWmx4RnlQREoyTW9QcjlSR2s=")
+        fetch(str).then(r => {
+            return r.json();
+        }).then(j => {
+            j['values'].forEach(i => {
+                var str = "<tr id=\"" + i[0] + "\" class=\"";
+                if (i.length > 1) {
+                    if (i[1].includes("【")) {
+                        str += "table-success\">"
+                    }
+                    else {
+                        str += "table-info\">"
+                    }
+                }
+                else {
+                    str += "table-light\">"
+                }
+                str += "<th scope=\"col\">" + i[0] + "</th><th scope=\"col\">" + (i.length > 1 ? i[1] : "") + "</th></tr>";
+                $("#tab").append(str);
+            });
+        });
+    </script>
+</body>
+
+</html>
