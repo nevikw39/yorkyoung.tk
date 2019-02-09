@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title id="title">/*__title__*/</title>
+    <title>約克羊陣線</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="robots" content="noindex" />
@@ -47,10 +47,10 @@
                         <h5 class="card-title">Error</h5>
                     </div>
                     <div class="card-body">
-                        <h1 style="display: inline;" id="code">/*__code__*/</h1>
-                        <h3 class="card-subtitle mb-2" style="display: inline;" id="name">/*__name__*/</h3>
+                        <h1 style="display: inline;">404</h1>
+                        <h3 class="card-subtitle mb-2" style="display: inline;">Not Found</h3>
                         <br><br>
-                        <h5 class="card-text" id="description">/*__descirption__*/</h5><br>
+                        <h5 class="card-text">The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</h5><br>
                     </div>
                 </div>
             </div>
@@ -72,18 +72,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script>
-    $.getJSON('/error/error.json', j => {
-        code = new URL(location.href).searchParams.get('code');
-        if (code === null) {
-            return 0;
-        }
-        $('#title').text(code + ' ' + j[code]['name']);
-        $('#code').text(code);
-        $('#name').text(j[code]['name']);
-        $('#description').text(j[code]['description']);
-    });
-    </script>
 </body>
 
 </html>
