@@ -96,9 +96,7 @@
             }
         );
         var str = atob("aHR0cHM6Ly9jb250ZW50LXNoZWV0cy5nb29nbGVhcGlzLmNvbS92NC9zcHJlYWRzaGVldHMvMVRZODlKd3pNQXZzTUxiOVl4WE1wNk9ZZFJOTWZad3RneU9RYms4T3Q3cWMvdmFsdWVzLzElM0ExMDAwP2tleT1BSXphU3lBdEVhc1hLSl9NWkhwQWlXWmx4RnlQREoyTW9QcjlSR2s=")
-        fetch(str).then(r => {
-            return r.json();
-        }).then(j => {
+        $.getJSON(str, j => {
             j['values'].forEach(i => {
                 var str = "<tr id=\"" + i[0] + "\" class=\"";
                 if (i.length > 1) {

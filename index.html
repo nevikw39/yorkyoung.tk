@@ -124,16 +124,12 @@
             </div>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
-        var str = atob("aHR0cHM6Ly9jb250ZW50LXNoZWV0cy5nb29nbGVhcGlzLmNvbS92NC9zcHJlYWRzaGVldHMvMVRZODlKd3pNQXZzTUxiOVl4WE1wNk9ZZFJOTWZad3RneU9RYms4T3Q3cWMvdmFsdWVzLzElM0ExMDAwP2tleT1BSXphU3lBdEVhc1hLSl9NWkhwQWlXWmx4RnlQREoyTW9QcjlSR2s=")
-        fetch(str).then(r => {
-            return r.json();
-        }).then(j => {
-            $("#num").text(j['values'].length);
-        });
+        var str = atob("aHR0cHM6Ly9jb250ZW50LXNoZWV0cy5nb29nbGVhcGlzLmNvbS92NC9zcHJlYWRzaGVldHMvMVRZODlKd3pNQXZzTUxiOVl4WE1wNk9ZZFJOTWZad3RneU9RYms4T3Q3cWMvdmFsdWVzL0ExJTNBQTEwMDA/a2V5PUFJemFTeUF0RWFzWEtKX01aSHBBaVdabHhGeVBESjJNb1ByOVJHaw==")
+        $.getJSON(str, j => {$("#num").text(j['values'].length);})
     </script>
 </body>
 
